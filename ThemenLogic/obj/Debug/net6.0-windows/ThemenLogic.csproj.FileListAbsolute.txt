@@ -1,0 +1,17 @@
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\ThemenLogic\bin\Debug\net6.0-windows\ThemenLogic.exe
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\ThemenLogic\bin\Debug\net6.0-windows\ThemenLogic.deps.json
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\ThemenLogic\bin\Debug\net6.0-windows\ThemenLogic.runtimeconfig.json
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\ThemenLogic\bin\Debug\net6.0-windows\ThemenLogic.dll
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\ThemenLogic\bin\Debug\net6.0-windows\ThemenLogic.pdb
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\ThemenLogic\obj\Debug\net6.0-windows\ThemenLogic.csproj.AssemblyReference.cache
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\ThemenLogic\obj\Debug\net6.0-windows\ThemenLogic.Form1.resources
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\ThemenLogic\obj\Debug\net6.0-windows\ThemenLogic.csproj.GenerateResource.cache
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\ThemenLogic\obj\Debug\net6.0-windows\ThemenLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\ThemenLogic\obj\Debug\net6.0-windows\ThemenLogic.AssemblyInfoInputs.cache
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\ThemenLogic\obj\Debug\net6.0-windows\ThemenLogic.AssemblyInfo.cs
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\ThemenLogic\obj\Debug\net6.0-windows\ThemenLogic.csproj.CoreCompileInputs.cache
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\ThemenLogic\obj\Debug\net6.0-windows\ThemenLogic.dll
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\ThemenLogic\obj\Debug\net6.0-windows\refint\ThemenLogic.dll
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\ThemenLogic\obj\Debug\net6.0-windows\ThemenLogic.pdb
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\ThemenLogic\obj\Debug\net6.0-windows\ThemenLogic.genruntimeconfig.cache
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\ThemenLogic\obj\Debug\net6.0-windows\ref\ThemenLogic.dll
