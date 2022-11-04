@@ -1,0 +1,10 @@
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\Test\bin\Debug\Test.exe.config
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\Test\bin\Debug\Test.exe
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\Test\bin\Debug\Test.pdb
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\Test\obj\Debug\Test.csproj.AssemblyReference.cache
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\Test\obj\Debug\Test.csproj.SuggestedBindingRedirects.cache
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\Test\obj\Debug\Test.Properties.Resources.resources
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\Test\obj\Debug\Test.csproj.GenerateResource.cache
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\Test\obj\Debug\Test.exe
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\Test\obj\Debug\Test.pdb
