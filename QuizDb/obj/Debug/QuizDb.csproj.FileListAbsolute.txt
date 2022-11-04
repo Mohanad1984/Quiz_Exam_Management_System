@@ -1,0 +1,3 @@
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\QuizDb\obj\Debug\QuizDb.csproj.AssemblyReference.cache
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\QuizDb\obj\Debug\QuizDb.csproj.SuggestedBindingRedirects.cache
+C:\Users\Admi\source\repos\Quiz_Exam_Management_System\QuizDb\obj\Debug\QuizDb.csproj.CoreCompileInputs.cache
