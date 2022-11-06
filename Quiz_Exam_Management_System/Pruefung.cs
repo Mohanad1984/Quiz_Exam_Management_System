@@ -16,6 +16,9 @@ namespace Quiz_Exam_Management_System
         public Pruefung()
         {
             InitializeComponent();
+            this.BackColor = Color.FromArgb(255, 235, 193);
+            panel_Haupt.BackColor = Color.FromArgb(255, 235, 193);
+            panel2.BackColor = Color.FromArgb(215, 168, 110);
             lbl_KandidatName.Text = Einloggen.KandidatbenutzerName;
             datenbankConnection = new DatenbankConnection();
             GetFaecher();
@@ -23,9 +26,10 @@ namespace Quiz_Exam_Management_System
             //lbl_KandidatName.Text = Einloggen.dataTable_kandidat.Rows[0][1].ToString() + "  " + Einloggen.dataTable_kandidat.Rows[0][2].ToString();
             Qn = datenbankConnection.GetFragenAnzahl(cbo_Fach.SelectedValue.ToString());
             multirandom();
+            Rest();
             // SaveHighest();
         }
-        SqlConnection con = new SqlConnection(@"Data Source = HAUPT-PC; Initial Catalog = QuizDb; Integrated Security = True");
+        SqlConnection con = new SqlConnection(@"Data Source = localhost; Initial Catalog = QuizDb; Integrated Security = True");
         //DataTable dataTable_Fragen;
         string antwort;
         string[] antworten_Array = new string[5];
@@ -83,17 +87,18 @@ namespace Quiz_Exam_Management_System
         }
         private void Rest()
         {
-
             radioBtn_Auswahl_1.Checked = false;
             radioBtn_Auswahl_2.Checked = false;
             radioBtn_Auswahl_3.Checked = false;
             radioBtn_Auswahl_4.Checked = false;
             radioBtn_Auswahl_5.Checked = false;
-            radioBtn_Auswahl_1.BackColor = Color.BurlyWood;
-            radioBtn_Auswahl_2.BackColor = Color.BurlyWood;
-            radioBtn_Auswahl_3.BackColor = Color.BurlyWood;
-            radioBtn_Auswahl_4.BackColor = Color.BurlyWood;
-            radioBtn_Auswahl_5.BackColor = Color.BurlyWood;
+            foreach (Control x in grb_Fragen.Controls)
+            {
+                if (x is RadioButton)
+                {
+                    ((RadioButton)x).BackColor = Color.FromArgb(240, 230, 140);
+                }
+            }
         }
         private void antwortschildern()
         {
@@ -127,11 +132,13 @@ namespace Quiz_Exam_Management_System
                 {
                     radioBtn_Auswahl_1.BackColor = Color.Green;
                     note++;
+                    AtwortEintragen(true, false);
                 }
                 else
                 {
                     radioBtn_Auswahl_1.BackColor = Color.Red;
                     antwortschildern();
+                    AtwortEintragen(false, true);
                 }
             }
             else if (radioBtn_Auswahl_2.Checked)
@@ -142,11 +149,13 @@ namespace Quiz_Exam_Management_System
                 {
                     radioBtn_Auswahl_2.BackColor = Color.Green;
                     note++;
+                    AtwortEintragen(true, false);
                 }
                 else
                 {
                     radioBtn_Auswahl_2.BackColor = Color.Red;
                     antwortschildern();
+                    AtwortEintragen(false, true);
                 }
             }
             else if (radioBtn_Auswahl_3.Checked)
@@ -156,11 +165,13 @@ namespace Quiz_Exam_Management_System
                 {
                     radioBtn_Auswahl_3.BackColor = Color.Green;
                     note++;
+                    AtwortEintragen(true, false);
                 }
                 else
                 {
                     radioBtn_Auswahl_3.BackColor = Color.Red;
                     antwortschildern();
+                    AtwortEintragen(false, true);
                 }
             }
             else if (radioBtn_Auswahl_4.Checked)
@@ -170,11 +181,13 @@ namespace Quiz_Exam_Management_System
                 {
                     radioBtn_Auswahl_4.BackColor = Color.Green;
                     note++;
+                    AtwortEintragen(true, false);
                 }
                 else
                 {
                     radioBtn_Auswahl_4.BackColor = Color.Red;
                     antwortschildern();
+                    AtwortEintragen(false, true);
                 }
             }
             else if (radioBtn_Auswahl_5.Checked)
@@ -184,18 +197,91 @@ namespace Quiz_Exam_Management_System
                 {
                     radioBtn_Auswahl_5.BackColor = Color.Green;
                     note++;
+                    AtwortEintragen(true, false);
                 }
                 else
                 {
                     radioBtn_Auswahl_5.BackColor = Color.Red;
                     antwortschildern();
+                    AtwortEintragen(false, true);
                 }
             }
             else
             {
                 antwortschildern();
+
+                AtwortEintragen(false, false);
             }
             txt_RichtigeAntwort.Text = note.ToString();
+
+        }
+        private void AtwortEintragen(bool antwortRichtig, bool antwortFalsch)
+        {
+            int itration = 0, richtigItration = 0, falschItration = 0;
+            string InsertIntoAntwortenTbl = "Insert Into AntwortenTbl (FachId, kandidatId, frageID, antwortDatum, antwortZeit," +
+                " antwortItration, antwortrichtig, antwortFalsch )" +
+                " Values" +
+                " (@FachId, @kandidatId, @frageID, @antwortDatum, @antwortZeit, @antwortItration, @antwortrichtig,  @antwortFalsch )";
+            string SelectAntwortAnzahlFromAntwortenTbl = "SELECT antwortItration, antwortrichtig, antwortFalsch FROM [QuizDb].[dbo].[AntwortenTbl]" +
+                " Where frageID = " + Fragen_Id;
+            string UpdateAntwortAnzahlFromAntwortenTbl = "UPDATE [dbo].[AntwortenTbl]" +
+                " SET" +
+                " antwortDatum = @antwortDatum," +
+                " antwortZeit = @antwortZeit," +
+                " antwortItration = @antwortItration," +
+                " antwortrichtig = @antwortrichtig," +
+                " antwortFalsch = @antwortFalsch" +
+                " WHERE  (frageID = @frageID AND kandidatId = @kandidatId AND fachId= @fachId)";
+
+            SqlCommand cmd_InsertIntoErgebnisTbl = new SqlCommand(InsertIntoAntwortenTbl, con);
+            SqlCommand cmd_SelectAntwortAnzahlFromAntwortenTbl = new SqlCommand(SelectAntwortAnzahlFromAntwortenTbl, con);
+            SqlCommand cmd_UpdateAntwortAnzahlFromAntwortenTbl = new SqlCommand(UpdateAntwortAnzahlFromAntwortenTbl, con);
+            con.Open();
+            SqlDataReader reader = cmd_SelectAntwortAnzahlFromAntwortenTbl.ExecuteReader();
+            if (reader.Read())
+            {
+                itration = (int)reader[0];
+                richtigItration = (int)reader[1];
+                falschItration = (int)reader[2];
+                con.Close();
+                cmd_UpdateAntwortAnzahlFromAntwortenTbl.Parameters.AddWithValue("@FachId", 1);
+                cmd_UpdateAntwortAnzahlFromAntwortenTbl.Parameters.AddWithValue("@kandidatId", 4);
+                cmd_UpdateAntwortAnzahlFromAntwortenTbl.Parameters.AddWithValue("@frageID", Fragen_Id);
+                cmd_UpdateAntwortAnzahlFromAntwortenTbl.Parameters.AddWithValue("@antwortDatum", System.DateTime.Now.Date);
+                cmd_UpdateAntwortAnzahlFromAntwortenTbl.Parameters.AddWithValue("@antwortZeit", System.DateTime.Now.TimeOfDay);
+                cmd_UpdateAntwortAnzahlFromAntwortenTbl.Parameters.AddWithValue("@antwortItration", itration + 1);
+                if (antwortRichtig)
+                    cmd_UpdateAntwortAnzahlFromAntwortenTbl.Parameters.AddWithValue("@antwortrichtig", richtigItration + 1);
+                else
+                    cmd_UpdateAntwortAnzahlFromAntwortenTbl.Parameters.AddWithValue("@antwortrichtig", richtigItration);
+                if (antwortFalsch)
+                    cmd_UpdateAntwortAnzahlFromAntwortenTbl.Parameters.AddWithValue("@antwortFalsch", falschItration + 1);
+                else
+                    cmd_UpdateAntwortAnzahlFromAntwortenTbl.Parameters.AddWithValue("@antwortFalsch", falschItration);
+                con.Open();
+                cmd_UpdateAntwortAnzahlFromAntwortenTbl.ExecuteNonQuery();
+            }
+            else
+            {
+                con.Close();
+                cmd_InsertIntoErgebnisTbl.Parameters.AddWithValue("@FachId", 1);    //lbl_Fach.Text.ToString());
+                cmd_InsertIntoErgebnisTbl.Parameters.AddWithValue("@kandidatId", 4);// lbl_Kandidaten.Text);
+                cmd_InsertIntoErgebnisTbl.Parameters.AddWithValue("@frageID", Fragen_Id);
+                cmd_InsertIntoErgebnisTbl.Parameters.AddWithValue("@antwortDatum", System.DateTime.Now.Date);
+                cmd_InsertIntoErgebnisTbl.Parameters.AddWithValue("@antwortZeit", System.DateTime.Now.TimeOfDay);
+                cmd_InsertIntoErgebnisTbl.Parameters.AddWithValue("@antwortItration", itration + 1);
+                if (antwortRichtig)
+                    cmd_InsertIntoErgebnisTbl.Parameters.AddWithValue("@antwortrichtig", richtigItration + 1);
+                else
+                    cmd_InsertIntoErgebnisTbl.Parameters.AddWithValue("@antwortrichtig", richtigItration);
+                if (antwortFalsch)
+                    cmd_InsertIntoErgebnisTbl.Parameters.AddWithValue("@antwortFalsch", falschItration + 1);
+                else
+                    cmd_InsertIntoErgebnisTbl.Parameters.AddWithValue("@antwortFalsch", falschItration);
+                con.Open();
+                cmd_InsertIntoErgebnisTbl.ExecuteNonQuery();
+            }
+            con.Close();
         }
         private void ErgebnisEintragen()
         {
@@ -223,6 +309,7 @@ namespace Quiz_Exam_Management_System
         {
             try
             {
+
                 timerFrageZeit.Start();
                 grb_Fragen.Text = "Frage " + gefragten_Fragen;
                 txt_GesamtFragen.Text = datenbankConnection.DataTable_Fragen.Rows.Count.ToString();
@@ -231,7 +318,7 @@ namespace Quiz_Exam_Management_System
                 radioBtn_Auswahl_2.Visible = true;
                 radioBtn_Auswahl_3.Visible = true;
                 radioBtn_Auswahl_4.Visible = true;
-                radioBtn_Auswahl_5.Visible = true;
+                radioBtn_Auswahl_5.Visible = false;
                 //foreach (DataRow dr in datenbankConnection.DataTable_Fragen.Rows)
                 //{
                 //    textBox2.Text += dr[0].ToString() + "\r\n";
@@ -244,7 +331,7 @@ namespace Quiz_Exam_Management_System
                 //}
                 Fragen_Id = datenbankConnection.DataTable_Fragen.Rows[keys[index]][0].ToString();
                 string frage = datenbankConnection.DataTable_Fragen.Rows[keys[index]][1].ToString();
-                txt_Frage.Text = frage;
+                richTxt_Frage.Text = frage;
                 grb_Fragen.Text = "Antwort Moglichkeiten";
                 radioBtn_Auswahl_1.Text = datenbankConnection.DataTable_Fragen.Rows[keys[index]][2].ToString();
                 radioBtn_Auswahl_2.Text = datenbankConnection.DataTable_Fragen.Rows[keys[index]][3].ToString();
@@ -260,6 +347,7 @@ namespace Quiz_Exam_Management_System
                 index++;
                 gefragten_Fragen++;
                 btn_Einreichen.Enabled = false;
+                Rest();
             }
             catch (Exception ex)
             {
@@ -280,7 +368,7 @@ namespace Quiz_Exam_Management_System
                         grb_Fragen.Text = "Frage " + gefragten_Fragen;
                         btn_next.Text = "Check";
                         textBox2.Text = "";
-                        txt_Frage.Text = datenbankConnection.DataTable_Fragen.Rows[keys[index]][1].ToString();
+                        richTxt_Frage.Text = datenbankConnection.DataTable_Fragen.Rows[keys[index]][1].ToString();
                         string[] initialArray = new string[4];
                         initialArray[0] = datenbankConnection.DataTable_Fragen.Rows[keys[index]][2].ToString();
                         initialArray[1] = datenbankConnection.DataTable_Fragen.Rows[keys[index]][3].ToString();
@@ -418,24 +506,49 @@ namespace Quiz_Exam_Management_System
         private void radioBtn_Auswahl_1_CheckedChanged(object sender, EventArgs e)
         {
             benutzerAntworten[ifrage] = radioBtn_Auswahl_1.Text;
+            radioBtn_Auswahl_1.BackColor = Color.SandyBrown;
+            radioBtn_Auswahl_2.BackColor = Color.FromArgb(240, 230, 140);
+            radioBtn_Auswahl_3.BackColor = Color.FromArgb(240, 230, 140);
+            radioBtn_Auswahl_4.BackColor = Color.FromArgb(240, 230, 140);
+            radioBtn_Auswahl_5.BackColor = Color.FromArgb(240, 230, 140);
         }
         private void radioBtn_Auswahl_2_CheckedChanged(object sender, EventArgs e)
         {
             benutzerAntworten[ifrage] = radioBtn_Auswahl_2.Text;
+            radioBtn_Auswahl_2.BackColor = Color.SandyBrown;
+            radioBtn_Auswahl_1.BackColor = Color.FromArgb(240, 230, 140);
+            radioBtn_Auswahl_3.BackColor = Color.FromArgb(240, 230, 140);
+            radioBtn_Auswahl_4.BackColor = Color.FromArgb(240, 230, 140);
+            radioBtn_Auswahl_5.BackColor = Color.FromArgb(240, 230, 140);
         }
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             benutzerAntworten[ifrage] = radioBtn_Auswahl_3.Text;
+            radioBtn_Auswahl_3.BackColor = Color.SandyBrown;
+            radioBtn_Auswahl_2.BackColor = Color.FromArgb(240, 230, 140);
+            radioBtn_Auswahl_1.BackColor = Color.FromArgb(240, 230, 140);
+            radioBtn_Auswahl_4.BackColor = Color.FromArgb(240, 230, 140);
+            radioBtn_Auswahl_5.BackColor = Color.FromArgb(240, 230, 140);
         } //Der Index war außerhalb des Arraybereichs."Bereich [0, 99]
 
         private void radioBtn_Auswahl_4_CheckedChanged(object sender, EventArgs e)
         {
             benutzerAntworten[ifrage] = radioBtn_Auswahl_4.Text;
+            radioBtn_Auswahl_4.BackColor = Color.SandyBrown;
+            radioBtn_Auswahl_2.BackColor = Color.FromArgb(240, 230, 140);
+            radioBtn_Auswahl_3.BackColor = Color.FromArgb(240, 230, 140);
+            radioBtn_Auswahl_1.BackColor = Color.FromArgb(240, 230, 140);
+            radioBtn_Auswahl_5.BackColor = Color.FromArgb(240, 230, 140);
         }// Achtung:
          //: "Der Index war außerhalb des Arraybereichs."
         private void radioBtn_Auswahl_5_CheckedChanged(object sender, EventArgs e)
         {
             benutzerAntworten[ifrage] = radioBtn_Auswahl_5.Text;
+            radioBtn_Auswahl_5.BackColor = Color.SandyBrown;
+            radioBtn_Auswahl_2.BackColor = Color.FromArgb(240, 230, 140);
+            radioBtn_Auswahl_3.BackColor = Color.FromArgb(240, 230, 140);
+            radioBtn_Auswahl_4.BackColor = Color.FromArgb(240, 230, 140);
+            radioBtn_Auswahl_1.BackColor = Color.FromArgb(240, 230, 140);
         }
         private void pictureBox5_Click(object sender, EventArgs e)
         {

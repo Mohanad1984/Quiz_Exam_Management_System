@@ -15,7 +15,7 @@ namespace Quiz_Exam_Management_System
 
     public partial class Fragen : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source = HAUPT-PC; Initial Catalog = QuizDb; Integrated Security = True");
+        SqlConnection con = new SqlConnection(@"Data Source = localhost; Initial Catalog = QuizDb; Integrated Security = True");
         string import_FileName_Pfad;
         int key = 0;
         int admiId = 1;
@@ -24,6 +24,17 @@ namespace Quiz_Exam_Management_System
         public Fragen()
         {
             InitializeComponent();
+            this.BackColor = Color.FromArgb(255, 235, 193);
+            panel_Haupt.BackColor =  Color.FromArgb(255, 235, 193);
+            panel2.BackColor =  Color.FromArgb(215, 168, 110);
+            foreach (Control x in this.Controls)
+            {
+                if (x is TextBox)
+                {
+                    ((TextBox)x).BackColor = Color.FromArgb(142, 50, 0);
+                }
+            }
+            
             //CreateTablesFragenTbl();
             datenbankConnection = new DatenbankConnection();
             FragenAnzeigen();
