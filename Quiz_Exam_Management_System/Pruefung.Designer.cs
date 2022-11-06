@@ -34,7 +34,6 @@
             this.lbl_GesamtFragen = new System.Windows.Forms.Label();
             this.txt_GesamtFragen = new System.Windows.Forms.TextBox();
             this.txt_RichtigeAntwort = new System.Windows.Forms.TextBox();
-            this.txt_Frage = new System.Windows.Forms.TextBox();
             this.radioBtn_Auswahl_5 = new System.Windows.Forms.RadioButton();
             this.pic_Hinweis = new System.Windows.Forms.PictureBox();
             this.dateTimeP_PruefungZeit = new System.Windows.Forms.DateTimePicker();
@@ -66,6 +65,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timerFrageZeit = new System.Windows.Forms.Timer(this.components);
             this.TimerCheck = new System.Windows.Forms.Timer(this.components);
+            this.richTxt_Frage = new System.Windows.Forms.RichTextBox();
             this.panel_Haupt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Hinweis)).BeginInit();
             this.panel_Zeit.SuspendLayout();
@@ -82,11 +82,11 @@
             // panel_Haupt
             // 
             this.panel_Haupt.BackColor = System.Drawing.Color.BurlyWood;
+            this.panel_Haupt.Controls.Add(this.richTxt_Frage);
             this.panel_Haupt.Controls.Add(this.lbl_RichtigeAntwort);
             this.panel_Haupt.Controls.Add(this.lbl_GesamtFragen);
             this.panel_Haupt.Controls.Add(this.txt_GesamtFragen);
             this.panel_Haupt.Controls.Add(this.txt_RichtigeAntwort);
-            this.panel_Haupt.Controls.Add(this.txt_Frage);
             this.panel_Haupt.Controls.Add(this.radioBtn_Auswahl_5);
             this.panel_Haupt.Controls.Add(this.pic_Hinweis);
             this.panel_Haupt.Controls.Add(this.dateTimeP_PruefungZeit);
@@ -106,7 +106,7 @@
             this.panel_Haupt.Controls.Add(this.lbl_QuizPro);
             this.panel_Haupt.Controls.Add(this.panel2);
             this.panel_Haupt.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel_Haupt.Location = new System.Drawing.Point(1, 1);
+            this.panel_Haupt.Location = new System.Drawing.Point(3, 1);
             this.panel_Haupt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel_Haupt.Name = "panel_Haupt";
             this.panel_Haupt.Size = new System.Drawing.Size(1800, 875);
@@ -115,7 +115,7 @@
             // lbl_RichtigeAntwort
             // 
             this.lbl_RichtigeAntwort.AutoSize = true;
-            this.lbl_RichtigeAntwort.Location = new System.Drawing.Point(1380, 418);
+            this.lbl_RichtigeAntwort.Location = new System.Drawing.Point(1487, 166);
             this.lbl_RichtigeAntwort.Name = "lbl_RichtigeAntwort";
             this.lbl_RichtigeAntwort.Size = new System.Drawing.Size(119, 23);
             this.lbl_RichtigeAntwort.TabIndex = 18;
@@ -124,7 +124,7 @@
             // lbl_GesamtFragen
             // 
             this.lbl_GesamtFragen.AutoSize = true;
-            this.lbl_GesamtFragen.Location = new System.Drawing.Point(1380, 363);
+            this.lbl_GesamtFragen.Location = new System.Drawing.Point(1487, 111);
             this.lbl_GesamtFragen.Name = "lbl_GesamtFragen";
             this.lbl_GesamtFragen.Size = new System.Drawing.Size(115, 23);
             this.lbl_GesamtFragen.TabIndex = 17;
@@ -133,7 +133,7 @@
             // txt_GesamtFragen
             // 
             this.txt_GesamtFragen.Enabled = false;
-            this.txt_GesamtFragen.Location = new System.Drawing.Point(1505, 360);
+            this.txt_GesamtFragen.Location = new System.Drawing.Point(1612, 108);
             this.txt_GesamtFragen.Name = "txt_GesamtFragen";
             this.txt_GesamtFragen.Size = new System.Drawing.Size(100, 29);
             this.txt_GesamtFragen.TabIndex = 16;
@@ -141,47 +141,39 @@
             // txt_RichtigeAntwort
             // 
             this.txt_RichtigeAntwort.Enabled = false;
-            this.txt_RichtigeAntwort.Location = new System.Drawing.Point(1505, 418);
+            this.txt_RichtigeAntwort.Location = new System.Drawing.Point(1612, 166);
             this.txt_RichtigeAntwort.Name = "txt_RichtigeAntwort";
             this.txt_RichtigeAntwort.Size = new System.Drawing.Size(100, 29);
             this.txt_RichtigeAntwort.TabIndex = 15;
-            // 
-            // txt_Frage
-            // 
-            this.txt_Frage.Location = new System.Drawing.Point(11, 117);
-            this.txt_Frage.Multiline = true;
-            this.txt_Frage.Name = "txt_Frage";
-            this.txt_Frage.ReadOnly = true;
-            this.txt_Frage.Size = new System.Drawing.Size(1297, 146);
-            this.txt_Frage.TabIndex = 14;
             // 
             // radioBtn_Auswahl_5
             // 
             this.radioBtn_Auswahl_5.BackColor = System.Drawing.Color.Chocolate;
             this.radioBtn_Auswahl_5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.radioBtn_Auswahl_5.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioBtn_Auswahl_5.Location = new System.Drawing.Point(1462, 806);
+            this.radioBtn_Auswahl_5.Location = new System.Drawing.Point(238, 790);
             this.radioBtn_Auswahl_5.Name = "radioBtn_Auswahl_5";
-            this.radioBtn_Auswahl_5.Size = new System.Drawing.Size(213, 66);
+            this.radioBtn_Auswahl_5.Size = new System.Drawing.Size(161, 19);
             this.radioBtn_Auswahl_5.TabIndex = 4;
             this.radioBtn_Auswahl_5.TabStop = true;
             this.radioBtn_Auswahl_5.Text = "Auswahl 5";
             this.radioBtn_Auswahl_5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioBtn_Auswahl_5.UseVisualStyleBackColor = false;
+            this.radioBtn_Auswahl_5.Visible = false;
             this.radioBtn_Auswahl_5.CheckedChanged += new System.EventHandler(this.radioBtn_Auswahl_5_CheckedChanged);
             // 
             // pic_Hinweis
             // 
-            this.pic_Hinweis.Location = new System.Drawing.Point(1492, 117);
+            this.pic_Hinweis.Location = new System.Drawing.Point(1620, 312);
             this.pic_Hinweis.Name = "pic_Hinweis";
-            this.pic_Hinweis.Size = new System.Drawing.Size(221, 189);
+            this.pic_Hinweis.Size = new System.Drawing.Size(75, 60);
             this.pic_Hinweis.TabIndex = 13;
             this.pic_Hinweis.TabStop = false;
             // 
             // dateTimeP_PruefungZeit
             // 
             this.dateTimeP_PruefungZeit.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimeP_PruefungZeit.Location = new System.Drawing.Point(1517, 42);
+            this.dateTimeP_PruefungZeit.Location = new System.Drawing.Point(1512, 68);
             this.dateTimeP_PruefungZeit.Name = "dateTimeP_PruefungZeit";
             this.dateTimeP_PruefungZeit.Size = new System.Drawing.Size(200, 29);
             this.dateTimeP_PruefungZeit.TabIndex = 12;
@@ -190,7 +182,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(1517, 7);
+            this.dateTimePicker1.Location = new System.Drawing.Point(1512, 33);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 29);
             this.dateTimePicker1.TabIndex = 11;
@@ -207,19 +199,19 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(1183, 9);
+            this.textBox2.Location = new System.Drawing.Point(1619, 378);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(87, 102);
+            this.textBox2.Size = new System.Drawing.Size(76, 102);
             this.textBox2.TabIndex = 9;
             this.textBox2.Visible = false;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(1326, 9);
+            this.textBox1.Location = new System.Drawing.Point(1619, 486);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(76, 688);
+            this.textBox1.Size = new System.Drawing.Size(76, 185);
             this.textBox1.TabIndex = 9;
             this.textBox1.Visible = false;
             // 
@@ -236,16 +228,16 @@
             // panel_Zeit
             // 
             this.panel_Zeit.Controls.Add(this.lbl_Zeit);
-            this.panel_Zeit.Location = new System.Drawing.Point(1361, 705);
+            this.panel_Zeit.Location = new System.Drawing.Point(1612, 205);
             this.panel_Zeit.Name = "panel_Zeit";
-            this.panel_Zeit.Size = new System.Drawing.Size(82, 79);
+            this.panel_Zeit.Size = new System.Drawing.Size(83, 79);
             this.panel_Zeit.TabIndex = 7;
             // 
             // lbl_Zeit
             // 
             this.lbl_Zeit.AutoSize = true;
             this.lbl_Zeit.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Zeit.Location = new System.Drawing.Point(18, 25);
+            this.lbl_Zeit.Location = new System.Drawing.Point(-5, 13);
             this.lbl_Zeit.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Zeit.Name = "lbl_Zeit";
             this.lbl_Zeit.Size = new System.Drawing.Size(45, 29);
@@ -260,7 +252,7 @@
             this.grb_Fragen.Controls.Add(this.radioBtn_Auswahl_1);
             this.grb_Fragen.Location = new System.Drawing.Point(11, 269);
             this.grb_Fragen.Name = "grb_Fragen";
-            this.grb_Fragen.Size = new System.Drawing.Size(1303, 494);
+            this.grb_Fragen.Size = new System.Drawing.Size(1432, 494);
             this.grb_Fragen.TabIndex = 6;
             this.grb_Fragen.TabStop = false;
             this.grb_Fragen.Text = "Fragen";
@@ -272,7 +264,7 @@
             this.radioBtn_Auswahl_4.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioBtn_Auswahl_4.Location = new System.Drawing.Point(6, 373);
             this.radioBtn_Auswahl_4.Name = "radioBtn_Auswahl_4";
-            this.radioBtn_Auswahl_4.Size = new System.Drawing.Size(1291, 109);
+            this.radioBtn_Auswahl_4.Size = new System.Drawing.Size(1420, 109);
             this.radioBtn_Auswahl_4.TabIndex = 3;
             this.radioBtn_Auswahl_4.TabStop = true;
             this.radioBtn_Auswahl_4.Text = "Auswahl 4";
@@ -288,7 +280,7 @@
             this.radioBtn_Auswahl_3.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioBtn_Auswahl_3.Location = new System.Drawing.Point(6, 258);
             this.radioBtn_Auswahl_3.Name = "radioBtn_Auswahl_3";
-            this.radioBtn_Auswahl_3.Size = new System.Drawing.Size(1291, 109);
+            this.radioBtn_Auswahl_3.Size = new System.Drawing.Size(1420, 109);
             this.radioBtn_Auswahl_3.TabIndex = 2;
             this.radioBtn_Auswahl_3.TabStop = true;
             this.radioBtn_Auswahl_3.Text = "Auswahl 3";
@@ -304,7 +296,7 @@
             this.radioBtn_Auswahl_2.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioBtn_Auswahl_2.Location = new System.Drawing.Point(6, 143);
             this.radioBtn_Auswahl_2.Name = "radioBtn_Auswahl_2";
-            this.radioBtn_Auswahl_2.Size = new System.Drawing.Size(1291, 109);
+            this.radioBtn_Auswahl_2.Size = new System.Drawing.Size(1420, 109);
             this.radioBtn_Auswahl_2.TabIndex = 1;
             this.radioBtn_Auswahl_2.TabStop = true;
             this.radioBtn_Auswahl_2.Text = "Auswahl 2";
@@ -321,7 +313,7 @@
             this.radioBtn_Auswahl_1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.radioBtn_Auswahl_1.Location = new System.Drawing.Point(6, 28);
             this.radioBtn_Auswahl_1.Name = "radioBtn_Auswahl_1";
-            this.radioBtn_Auswahl_1.Size = new System.Drawing.Size(1291, 109);
+            this.radioBtn_Auswahl_1.Size = new System.Drawing.Size(1420, 109);
             this.radioBtn_Auswahl_1.TabIndex = 0;
             this.radioBtn_Auswahl_1.TabStop = true;
             this.radioBtn_Auswahl_1.Text = "Auswahl 1";
@@ -340,7 +332,7 @@
             this.btn_next.ForeColor = System.Drawing.Color.DarkBlue;
             this.btn_next.Location = new System.Drawing.Point(11, 815);
             this.btn_next.Name = "btn_next";
-            this.btn_next.Size = new System.Drawing.Size(1303, 48);
+            this.btn_next.Size = new System.Drawing.Size(1432, 48);
             this.btn_next.TabIndex = 5;
             this.btn_next.Text = "Nächste";
             this.btn_next.UseVisualStyleBackColor = false;
@@ -352,7 +344,7 @@
             this.btn_Einreichen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Einreichen.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Einreichen.ForeColor = System.Drawing.Color.DarkBlue;
-            this.btn_Einreichen.Location = new System.Drawing.Point(133, 52);
+            this.btn_Einreichen.Location = new System.Drawing.Point(240, 15);
             this.btn_Einreichen.Name = "btn_Einreichen";
             this.btn_Einreichen.Size = new System.Drawing.Size(101, 32);
             this.btn_Einreichen.TabIndex = 5;
@@ -407,7 +399,7 @@
             // 
             this.lbl_QuizPro.AutoSize = true;
             this.lbl_QuizPro.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_QuizPro.Location = new System.Drawing.Point(1338, 828);
+            this.lbl_QuizPro.Location = new System.Drawing.Point(1607, 8);
             this.lbl_QuizPro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_QuizPro.Name = "lbl_QuizPro";
             this.lbl_QuizPro.Size = new System.Drawing.Size(105, 25);
@@ -461,6 +453,7 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 7;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Visible = false;
             // 
             // pictureBox3
             // 
@@ -471,6 +464,7 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Visible = false;
             // 
             // pictureBox2
             // 
@@ -481,6 +475,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
             // 
             // pictureBox1
             // 
@@ -502,6 +497,16 @@
             // 
             this.TimerCheck.Interval = 1000;
             this.TimerCheck.Tick += new System.EventHandler(this.TimerCheck_Tick);
+            // 
+            // richTxt_Frage
+            // 
+            this.richTxt_Frage.Font = new System.Drawing.Font("Arial Narrow", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTxt_Frage.Location = new System.Drawing.Point(11, 84);
+            this.richTxt_Frage.Name = "richTxt_Frage";
+            this.richTxt_Frage.ReadOnly = true;
+            this.richTxt_Frage.Size = new System.Drawing.Size(1432, 186);
+            this.richTxt_Frage.TabIndex = 19;
+            this.richTxt_Frage.Text = "";
             // 
             // Pruefung
             // 
@@ -566,10 +571,10 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.RadioButton radioBtn_Auswahl_5;
         private System.Windows.Forms.PictureBox pic_Hinweis;
-        private System.Windows.Forms.TextBox txt_Frage;
         private System.Windows.Forms.Label lbl_RichtigeAntwort;
         private System.Windows.Forms.Label lbl_GesamtFragen;
         private System.Windows.Forms.TextBox txt_GesamtFragen;
         private System.Windows.Forms.TextBox txt_RichtigeAntwort;
+        private System.Windows.Forms.RichTextBox richTxt_Frage;
     }
 }

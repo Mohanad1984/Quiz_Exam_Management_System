@@ -14,7 +14,7 @@ namespace Quiz_Exam_Management_System
     public partial class Faecher : Form
     {
         int key = 0;
-        SqlConnection con = new SqlConnection(@"Data Source = HAUPT-PC; Initial Catalog = QuizDb; Integrated Security = True");
+        SqlConnection con = new SqlConnection(@"Data Source = localhost; Initial Catalog = QuizDb; Integrated Security = True");
         public Faecher()
         {
             InitializeComponent();

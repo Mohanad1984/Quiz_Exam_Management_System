@@ -30,7 +30,7 @@ namespace Quiz_Exam_Management_System
         */
         DataTable dt;
         int key = 0;
-        SqlConnection con = new SqlConnection(@"Data Source = HAUPT-PC; Initial Catalog = QuizDb; Integrated Security = True");
+        SqlConnection con = new SqlConnection(@"Data Source = localhost; Initial Catalog = QuizDb; Integrated Security = True");
         private void panel_Haupt_Paint(object sender, PaintEventArgs e)
         {
 

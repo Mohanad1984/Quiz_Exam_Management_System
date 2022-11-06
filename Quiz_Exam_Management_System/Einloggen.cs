@@ -20,7 +20,7 @@ namespace Quiz_Exam_Management_System
         {
             InitializeComponent();
         }
-        SqlConnection con = new SqlConnection(@"Data Source = HAUPT-PC; Initial Catalog = QuizDb; Integrated Security = True");
+        SqlConnection con = new SqlConnection(@"Data Source = localhost; Initial Catalog = QuizDb; Integrated Security = True");
         public static DataTable dataTable_kandidat;
         public static string KandidatbenutzerName= "";
         private void btn_Einloggen_Click(object sender, EventArgs e)
@@ -30,7 +30,7 @@ namespace Quiz_Exam_Management_System
 
             if (txt_Benutzername.Text == "" || txt_Passwort.Text == "")
             {
-                MessageBox.Show("Du Bist Dumm!");
+                MessageBox.Show("Bitte geben Sie die Benutzername und das Kennwort ein!");
             }
             else
             {
@@ -52,7 +52,7 @@ namespace Quiz_Exam_Management_System
                     }
                     else
                     {
-                        MessageBox.Show("falsche Benutzer Name oder Passwort!");
+                        MessageBox.Show("Der Benutzername oder das Kennwort ist falsch!");
                     }
                     con.Close();
                 }catch(Exception ex)
@@ -71,7 +71,7 @@ namespace Quiz_Exam_Management_System
             txt_Benutzername.Visible = false;
             if (txt_Passwort.Text == "")
             {
-                MessageBox.Show("Bitte geben Sie die Passwort ein");
+                MessageBox.Show("Bitte geben Sie die Passwort ein!");
             }
             else
             {
@@ -92,7 +92,7 @@ namespace Quiz_Exam_Management_System
                     }
                     else
                     {
-                        MessageBox.Show("falsche Benutzer Name oder Passwort!");
+                        MessageBox.Show("Der Benutzername oder das Kennwort ist falsch!");
                     }
                     con.Close();
                 }

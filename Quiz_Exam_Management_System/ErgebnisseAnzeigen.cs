@@ -15,7 +15,7 @@ namespace Quiz_Exam_Management_System
     {
         DataTable dt_faecher;
         DataTable dt_Kandidat;
-        SqlConnection con = new SqlConnection(@"Data Source = HAUPT-PC; Initial Catalog = QuizDb; Integrated Security = True");
+        SqlConnection con = new SqlConnection(@"Data Source = localhost; Initial Catalog = QuizDb; Integrated Security = True");
         public ErgebnisseAnzeigen()
         {
             InitializeComponent();

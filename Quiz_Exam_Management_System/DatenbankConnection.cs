@@ -12,7 +12,7 @@ namespace Quiz_Exam_Management_System
         private DataTable dataTable_Fragen;
         private DataTable dataTable_faecher; 
         private DataTable dataTable_ergebnisse; 
-        private String Server = "Data Source = HAUPT-PC; ";
+        private String Server = "Data Source = localhost; ";
         private String UserID = "Initial Catalog = QuizDb; ";
         private String Password = "Integrated Security = True";
         private String Database = "Database=QuizDb";
@@ -91,8 +91,8 @@ namespace Quiz_Exam_Management_System
 
         private const String commandStringCreateTableErgebnisTbl = "CREATE TABLE ErgebnisTbl(" +
                            " ergebnisId INT NOT NULL IDENTITY (1, 1) PRIMARY KEY," +
-                           " fachId INT(10) NOT NULL," +
-                           " kandidatId INT(10) NOT NULL," +
+                           " fachId INT NOT NULL," +
+                           " kandidatId INT NOT NULL," +
                            " ergebnisDatum DATE NOT NULL," +
                            " ergebnisZeit TIME NOT NULL," +
                            " ergebnisNoten INT NOT NULL," +
@@ -101,6 +101,20 @@ namespace Quiz_Exam_Management_System
                            " FOREIGN KEY (kandidatId) REFERENCES KandidatTbl (kandidatId)" +
                            " ); ";
 
+        private const String commandStringCreateTableAntwortenTbl = "CREATE TABLE AntwortenTbl(" +
+                         " antwortId INT NOT NULL IDENTITY (1, 1) PRIMARY KEY," +
+                         " fachId INT NOT NULL," +
+                         " kandidatId INT NOT NULL," +
+                         " frageID INT NOT NULL," +
+                         " antwortDatum DATE NOT NULL," +
+                         " antwortZeit TIME NOT NULL," +
+                         " antwortItration INT NOT NULL," +
+                         " antwortrichtig INT NULL," +
+                         " antwortFalsch INT NULL," +
+                         " FOREIGN KEY (fachId) REFERENCES FachTbl (fachId)," +
+                         " FOREIGN KEY (kandidatId) REFERENCES KandidatTbl (kandidatId)," +
+                         " FOREIGN KEY (frageID) REFERENCES frageTbl (frageID)" +
+                         " ); ";
         private const String commandStringInsertIntoTableAdmiTblAnfangswert = "Insert Into AdmiTbl( "
                                                  + " AdmiVorname, AdmiNachname, AdmiBenutzername, AdmiPasswort, AdmiTelefonnummer, AdmiStrasse,"
                                                  + " AdmiHausNr, AdmiPlz, AdmiOrt, AdmiHinweise, AdmiGeburtsdatum )" + 
@@ -186,6 +200,7 @@ namespace Quiz_Exam_Management_System
         private const String scommandStringDropTableFachTbl = "DROP TABLE FachTbl;";
         private const String scommandStringDropTableFrageTbl = "DROP TABLE FrageTbl;";
         private const String scommandStringDropTableErgebnisTbl = "DROP TABLE ErgebnisTbl;";
+        SqlConnection conn = new SqlConnection(@"Data Source = localhost; Initial Catalog = QuizDb; Integrated Security = True");
         public DatenbankConnection()
         {
             con = Server + UserID + Password ;
@@ -223,7 +238,7 @@ namespace Quiz_Exam_Management_System
             get { return dataTable_ergebnisse; }
             set { dataTable_ergebnisse = value; }
         }
-        SqlConnection conn = new SqlConnection(@"Data Source = HAUPT-PC; Initial Catalog = QuizDb; Integrated Security = True");
+
 
         public void CreateDatabase()
         {
@@ -281,6 +296,10 @@ namespace Quiz_Exam_Management_System
                         command.ExecuteNonQuery();
                     }
                     using (SqlCommand command = new SqlCommand(commandStringInsertIntoTableAdmiTblAnfangswert, connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    using (SqlCommand command = new SqlCommand(commandStringCreateTableAntwortenTbl, connection))
                     {
                         command.ExecuteNonQuery();
                     }
@@ -836,11 +855,3 @@ namespace Quiz_Exam_Management_System
         }
     }
 }
-/*
- * yea type prop and press TAB. Visual Studio has a snippet for automatic property.
- * For property with public get and private set, you can use propg and press TAB.
- * For complete non auto property you can use propfull and press TAB.
- * 
- * 
- * 
- */
